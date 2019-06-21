@@ -1,0 +1,8 @@
+<!--components/comfirm/comfirm.wxml-->
+<view class='container'>
+    <textarea class='content' placeholder='{{placeholder}}'></textarea>
+    <view class='btn'>
+       <view class='comfirm'>确认</view>
+       <view class='cancel'>取消</view>
+    </view>
+</view>

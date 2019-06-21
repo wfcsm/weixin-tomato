@@ -1,0 +1,39 @@
+/* components/comfirm/comfirm.wxss */
+.container{
+  width: 640rpx;
+  height: 246rpx;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Regular;
+  color: #737373 ;
+
+}
+.container>.content{
+  background: #F2F2F2 ;
+  width: 600rpx;
+  height: 132rpx;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 20rpx;
+  font-size: 26rpx;
+  letter-spacing: 0.5;
+
+}
+.container > .btn{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 20rpx;
+  
+  letter-spacing: 0.5;
+}
+.container > .btn>.comfirm {
+  color: #F6705A 
+}

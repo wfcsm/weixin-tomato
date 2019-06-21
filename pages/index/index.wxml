@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="container">
+  <scroll-view scroll-y class='toDo' >
+      <view class='wrapper'>
+        <view class='item' wx:for="{{lists}}"  wx:for-index="index" wx:for-item="item" wx:key="item.id">
+          <view class='select'></view>
+          <text>{{item.text}}</text>
+        </view>
+      </view>
+  </scroll-view>
+  <view class='buttonWrapper'>
+   <t-button size="big" text="创建任务" ></t-button>
+  </view>
+ 
+  <view class='clock'>
+    <t-clock text='点击开始闹钟'></t-clock>
+  </view>
+  
+  
+  <!-- <t-comfirm placeholder="理由"></t-comfirm> -->
+</view>

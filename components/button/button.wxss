@@ -1,0 +1,34 @@
+/* components/button/button.wxss */
+button::after{
+  border: none
+}
+.container button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+  background: linear-gradient(to right,#FE996F ,#F6705A );
+  box-shadow: 0px 11px 32px 0px rgba(246,112,90,0.30);
+  color: #fff;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  letter-spacing: 0.8;
+  line-height: 80rpx;
+}
+.container button.small{
+  width: 360rpx
+}
+.container button.big{
+  width: 540rpx;
+}
+.container button.default{
+  border: 3px solid #F6705A;
+  box-shadow: 0px 11px 32px 0px rgba(246,112,90,0.30);
+  color: #F6705A;
+  background: transparent;
+}
+.container button:active{
+  opacity: 0.9
+}
+
+

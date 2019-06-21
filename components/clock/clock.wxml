@@ -1,0 +1,5 @@
+<!--components/clock/clock.wxml-->
+<view class='container'>
+    <image src='../../images/tomato.png'></image>
+    <view class='content'>{{text}}</view>
+</view>
