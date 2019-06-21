@@ -8,6 +8,9 @@ Component({
   properties: {
     text: {
       type: String
+    },
+    fontSize:{
+      type:Number
     }
 
   },

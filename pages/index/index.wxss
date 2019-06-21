@@ -41,7 +41,18 @@
   margin-left: 30rpx;
   margin-right: 30rpx;
   position: relative;
-  
+}
+.item >.active{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item >.active::before {
+  content: '';
+  width: 13rpx;
+  height: 13rpx;
+  border-radius: 50%;
+  background: #F6705A
 }
 .item >.select::after{
   content: "";
@@ -77,4 +88,11 @@
   justify-content: center;
   align-items: center;
   z-index: 0
+}
+.container .comfirmWrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 2
 }
