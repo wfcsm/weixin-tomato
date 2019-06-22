@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    defaultSecond: 5,
+    defaultSecond: 1500,
     fontSize:56,
     isTimeout:false,
     toggle:false,
@@ -80,7 +80,7 @@ Page({
     this.setData({ toggle: false })
   },
   again(){
-    this.setData({ defaultSecond: 5, isTimeout:false})
+    this.setData({ defaultSecond: 1500, isTimeout:false})
     this.startTimer()
   },
   onlyTimer(){
