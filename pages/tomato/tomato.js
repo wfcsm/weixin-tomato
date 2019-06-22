@@ -1,16 +1,20 @@
 // pages/tomato/tomato.js
+import http from "../../utils/util.js"
 Page({
   timer:null,
   /**
    * 页面的初始数据
    */
   data: {
-    defaultSecond: 1500,
+    defaultSecond: 5,
     fontSize:56,
     isTimeout:false,
     toggle:false,
     show:false,
-    time:''
+    cancalBtn:false,
+    finish:false,
+    time:'',
+    tomato:{}
   },
   initTime(){
     let m = Math.floor(this.data.defaultSecond / 60) 
@@ -29,6 +33,10 @@ Page({
    */
   onLoad: function (options) {
     this.onlyTimer()
+    http("POST","/tomatoes").then(res=>{
+      this.setData({ tomato:res.res.data.resource})
+      console.log(this.data.tomato)
+    })
   },
   startTimer(){
     this.timer = setInterval(() => {
@@ -40,7 +48,7 @@ Page({
   clearTimer(){
     if (this.data.defaultSecond === 0) {
       this.xxx()
-      this.setData({isTimeout:true})
+      this.setData({isTimeout:true,finish:true})
       return
     }
   },
@@ -57,7 +65,14 @@ Page({
     this.xxx()
   },
   comfirmAbando(e){
-    console.log(e.detail)
+    let content = e.detail
+    http("PUT", `/tomatoes/${this.data.tomato.id}`,{
+      description: content, aborted: true 
+    }).then(res=>{
+      wx.navigateBack({
+        to:-1
+      })
+    })
   },
   cancel(){
     this.setData({show:false})
@@ -65,8 +80,7 @@ Page({
     this.setData({ toggle: false })
   },
   again(){
-    console.log(1)
-    this.setData({ defaultSecond: 1500, isTimeout:false})
+    this.setData({ defaultSecond: 5, isTimeout:false})
     this.startTimer()
   },
   onlyTimer(){
@@ -78,52 +92,33 @@ Page({
     clearInterval(this.timer)
     this.timer=null
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onHide(){
+    if (this.data.defaultSecond !== 0){
+      http("PUT", `/tomatoes/${this.data.tomato.id}`, {
+        description: "退出放弃", aborted: true
+      })
+    }else{
+      http("PUT", `/tomatoes/${this.data.tomato.id}`, {
+        aborted: false
+      })
+    }
+    
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onUnload(){
+    if (this.data.defaultSecond !== 0) {
+      http("PUT", `/tomatoes/${this.data.tomato.id}`, {
+        description: "退出放弃", aborted: true
+      })
+    } else {
+      http("PUT", `/tomatoes/${this.data.tomato.id}`, {
+        aborted: false
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  finishToDo(e){
+    http("PUT", `/tomatoes/${this.data.tomato.id}`, {
+      description: e.detail, aborted: false
+    })
+    this.setData({ finish: false })
   }
 })

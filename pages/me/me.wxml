@@ -1,0 +1,40 @@
+<!--pages/me/me.wxml-->
+<view class='container'>
+  <view class='header'>
+     <view class='avatar'>
+       <open-data type="userAvatarUrl" class="avatarImage"></open-data>
+     </view>
+     <view class='name'>
+        <open-data type="userNickName"></open-data>
+     </view>
+     <button class='btn' open-type="contact"	>问题反馈</button>
+  </view>
+
+  <view class='tab'>
+    <view  class='' bindtap='choose' data-name="tomato">番茄历史</view>
+    <view class='' bindtap='choose' data-name="task">我完成的任务</view>
+    <view class='tabline {{tabName ==="task" && "taskActive"}}'></view>
+  </view>
+
+  <scroll-view scroll-y="true" style='height:{{height}}px' wx:if="{{tabName === 'tomato'}}">
+    <view class="item" wx:for="{{tomatoes}}"  wx:for-index="index" wx:key="index">
+        <wxs src="../../utils/formattor.wxs" module="name"></wxs>
+        <view class='time'>{{name.formatDay(index)}}</view>
+        <view class='content'wx:for="{{tomatoes[index]}}" wx:for-item="itemDetail" wx:key="itemDetail.id" wx:if="{{itemDetail.aborted===false}}">
+           <text>{{name.format(itemDetail.created_at)}}</text>
+           <view class='detail'>{{itemDetail.description}}</view>
+        </view>
+    </view>
+  </scroll-view>
+
+  <scroll-view scroll-y="true" style='height:{{height}}px' wx:if="{{tabName === 'task'}}">
+    <view class="item" wx:for="{{todos}}"  wx:for-index="index" wx:key="index" >
+        <wxs src="../../utils/formattor.wxs" module="name"></wxs>
+        <view class='time'>{{name.formatDay(index)}}</view>
+        <view class='content'wx:for="{{todos[index]}}" wx:for-item="itemDetail" wx:key="itemDetail.id" wx:if="{{itemDetail.completed}}">
+           <text >{{name.format(itemDetail.created_at)}}</text>
+           <view  class='detail'>{{itemDetail.description}}</view>
+        </view>
+    </view>
+  </scroll-view>
+</view>

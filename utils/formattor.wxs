@@ -1,0 +1,24 @@
+function format(date){
+     var time = getDate(date)
+     var arr = time.toString().split(" ")
+   
+    return arr[4]
+}
+function formatDay(date){
+    var m = date.slice(0,2)
+    console.log(m)
+    var day = date.slice(2)
+    if(m[0]==="0"){
+      m=m.slice(1)
+    }
+    if(day[0]==="0"){
+      day=day.slice(1)
+    }
+ 
+    var str = m+"月"+day+"日"
+    return str
+}
+module.exports = {
+  format: format,
+  formatDay: formatDay
+};

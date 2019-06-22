@@ -10,7 +10,8 @@ Component({
       type: String
     },
     fontSize:{
-      type:Number
+      type:Number,
+      value:26
     }
 
   },

@@ -1,0 +1,38 @@
+/* pages/login/login.wxss */
+button,.button-hover{
+  background: transparent
+}
+
+button::after{ border: none; }
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avatar{
+  width: 269rpx;
+  height: 269rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border:16rpx solid #F6705A;
+}
+.name{
+  font-family: PingFangSC-Regular;
+  color: #F6705A ;
+  letter-spacing: 0.5;
+  border-bottom: 4rpx solid #F6705A;
+  width: 250rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx
+}
+.btn{
+  width: 360rpx;
+  height: 80rpx;
+  background: linear-gradient(to right,#FE996F ,#F6705A );
+  box-shadow: 0px 11px 32px 0px rgba(246,112,90,0.30);
+  color: #fff;
+  letter-spacing: 0.8;
+  font-size: 26rpx;
+  margin-top: 50rpx;
+}

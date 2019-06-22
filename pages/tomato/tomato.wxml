@@ -19,5 +19,8 @@
     <view class='comfirWrapper'>
       <t-comfirm placeholder="放弃理由" show="{{show}}" bindcomfirm="comfirmAbando"  bindcancel="cancel"></t-comfirm>
     </view>
+    <view class='comfirWrapper'>
+      <t-comfirm placeholder="完成了什么" show="{{finish}}" bindcomfirm="finishToDo"  cancel="{{cancalBtn}}"></t-comfirm>
+    </view>
   
 </view>

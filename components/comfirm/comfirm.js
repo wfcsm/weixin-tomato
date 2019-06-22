@@ -13,7 +13,12 @@ Component({
     show:{
       type:Boolean,
       value:false
+    },
+    cancel:{
+      type:Boolean,
+      value:true
     }
+
   },
 
   /**
